@@ -11,29 +11,29 @@ class Keeper {
 	T* ptr_mas;
 	int size;
 public: 
-	Keeper() { size = 0; ptr_mas = nullptr; cout << "Вызван конструктор класса Keeper" << endl; };
-	~Keeper() { delete[] ptr_mas; cout << "Вызван деструктор класса Keeper" << endl; };
+	Keeper() { size = 0; ptr_mas = nullptr; cout << "Г‚Г»Г§ГўГ Г­ ГЄГ®Г­Г±ГІГ°ГіГЄГІГ®Г° ГЄГ«Г Г±Г±Г  Keeper" << endl; };
+	~Keeper() { delete[] ptr_mas; cout << "Г‚Г»Г§ГўГ Г­ Г¤ГҐГ±ГІГ°ГіГЄГІГ®Г° ГЄГ«Г Г±Г±Г  Keeper" << endl; };
 
-	void save(string);//функция сохранения (записи) в файл
-	void read(string);//функция чтения из файла
+	void save(string);//ГґГіГ­ГЄГ¶ГЁГї Г±Г®ГµГ°Г Г­ГҐГ­ГЁГї (Г§Г ГЇГЁГ±ГЁ) Гў ГґГ Г©Г«
+	void read(string);//ГґГіГ­ГЄГ¶ГЁГї Г·ГІГҐГ­ГЁГї ГЁГ§ ГґГ Г©Г«Г 
 	void add();
 	void del(int index);
 	void print();
 };
 
 template<class T>
-void Keeper<T>::save(string s){//принимаем путь к файлу
+void Keeper<T>::save(string s){//ГЇГ°ГЁГ­ГЁГ¬Г ГҐГ¬ ГЇГіГІГј ГЄ ГґГ Г©Г«Гі
 	ofstream fout(s, ios::out);
 	
 	try {
 		if (size == 0)
-			throw exception("Нет элементов для сохранения в файл");
+			throw exception("ГЌГҐГІ ГЅГ«ГҐГ¬ГҐГ­ГІГ®Гў Г¤Г«Гї Г±Г®ГµГ°Г Г­ГҐГ­ГЁГї Гў ГґГ Г©Г«");
 
 		fout << size << endl;
 		for (int i = 0; i < size; i++) {
 			fout << ptr_mas[i] << endl;
 		}
-		cout << "Запись в файл завершилась успешно" << endl;
+		cout << "Г‡Г ГЇГЁГ±Гј Гў ГґГ Г©Г« Г§Г ГўГҐГ°ГёГЁГ«Г Г±Гј ГіГ±ГЇГҐГёГ­Г®" << endl;
 	}
 	catch(exception &ex){
 		cout << ex.what() << endl;
@@ -56,7 +56,7 @@ void Keeper<T>::read(string s){
 		fin >> ptr_mas[i];
 	}
 
-	cout << "Чтение из файла завершилось успешно" << endl;
+	cout << "Г—ГІГҐГ­ГЁГҐ ГЁГ§ ГґГ Г©Г«Г  Г§Г ГўГҐГ°ГёГЁГ«Г®Г±Гј ГіГ±ГЇГҐГёГ­Г®" << endl;
 	fin.close();
 }
 
@@ -74,19 +74,19 @@ void Keeper<T>::add(){
 
 template<class T>
 void Keeper<T>::del(int index){
-	if (size == 0)								//Если массив пуст, то выводим сообщение об этом, и дальше выполнять функцию не надо
-		cout << "Массив пуст." << endl;
-	else {										//Если массив не пуст, то выполняем другую ветку с проверкой на корректность индекса
+	if (size == 0)								//Г…Г±Г«ГЁ Г¬Г Г±Г±ГЁГў ГЇГіГ±ГІ, ГІГ® ГўГ»ГўГ®Г¤ГЁГ¬ Г±Г®Г®ГЎГ№ГҐГ­ГЁГҐ Г®ГЎ ГЅГІГ®Г¬, ГЁ Г¤Г Г«ГјГёГҐ ГўГ»ГЇГ®Г«Г­ГїГІГј ГґГіГ­ГЄГ¶ГЁГѕ Г­ГҐ Г­Г Г¤Г®
+		cout << "ГЊГ Г±Г±ГЁГў ГЇГіГ±ГІ." << endl;
+	else {										//Г…Г±Г«ГЁ Г¬Г Г±Г±ГЁГў Г­ГҐ ГЇГіГ±ГІ, ГІГ® ГўГ»ГЇГ®Г«Г­ГїГҐГ¬ Г¤Г°ГіГЈГіГѕ ГўГҐГІГЄГі Г± ГЇГ°Г®ГўГҐГ°ГЄГ®Г© Г­Г  ГЄГ®Г°Г°ГҐГЄГІГ­Г®Г±ГІГј ГЁГ­Г¤ГҐГЄГ±Г 
 		 
 		try {
 
 			if (index > size - 1 || index < 0) 
-				throw exception("Неверный индекс. Произошел выход за границы массива.");
+				throw exception("ГЌГҐГўГҐГ°Г­Г»Г© ГЁГ­Г¤ГҐГЄГ±. ГЏГ°Г®ГЁГ§Г®ГёГҐГ« ГўГ»ГµГ®Г¤ Г§Г  ГЈГ°Г Г­ГЁГ¶Г» Г¬Г Г±Г±ГЁГўГ .");
 		}
 		catch (exception &ex) {
 			while (index < 0 || index > size - 1) {
 				cout << ex.what() << endl;
-				cout << "Введите корректный индекс:" << endl;
+				cout << "Г‚ГўГҐГ¤ГЁГІГҐ ГЄГ®Г°Г°ГҐГЄГІГ­Г»Г© ГЁГ­Г¤ГҐГЄГ±:" << endl;
 				cin >> index;
 			}
 		}
@@ -100,7 +100,7 @@ void Keeper<T>::del(int index){
 		delete[] ptr_mas;
 		ptr_mas = tmp;
 		size--;
-		cout << "Элемент успешно удален." << endl;		//Добавил собщение об успешном удалении
+		cout << "ГќГ«ГҐГ¬ГҐГ­ГІ ГіГ±ГЇГҐГёГ­Г® ГіГ¤Г Г«ГҐГ­." << endl;		//Г±Г®ГЎГ№ГҐГ­ГЁГҐ Г®ГЎ ГіГ±ГЇГҐГёГ­Г®Г¬ ГіГ¤Г Г«ГҐГ­ГЁГЁ
 	}
 }
 
@@ -108,7 +108,7 @@ template<class T>
 void Keeper<T>::print(){
 
 	if (size == 0)
-		cout << "Элементов нет" << endl;
+		cout << "ГќГ«ГҐГ¬ГҐГ­ГІГ®Гў Г­ГҐГІ" << endl;
 	else
 		for (int i = 0; i < size; i++) {
 			cout << ptr_mas[i] << endl;
