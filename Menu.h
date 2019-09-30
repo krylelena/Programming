@@ -8,25 +8,24 @@ void Menu(T& obj, string s) {
 	int flag = 1;
 	while (flag) {
 		system("cls");
-		cout << "1 - Добавление." << endl;
-		cout << "2 - Удаление." << endl;
-		cout << "3 - Чтение из файла." << endl;
-		cout << "4 - Запись в файл." << endl;
-		cout << "5 - Вывод данных на экран." << endl;
-		cout << "6 - Выход в основаное меню." << endl;
+		cout << "1 - Г„Г®ГЎГ ГўГ«ГҐГ­ГЁГҐ." << endl;
+		cout << "2 - Г“Г¤Г Г«ГҐГ­ГЁГҐ." << endl;
+		cout << "3 - Г—ГІГҐГ­ГЁГҐ ГЁГ§ ГґГ Г©Г«Г ." << endl;
+		cout << "4 - Г‡Г ГЇГЁГ±Гј Гў ГґГ Г©Г«." << endl;
+		cout << "5 - Г‚Г»ГўГ®Г¤ Г¤Г Г­Г­Г»Гµ Г­Г  ГЅГЄГ°Г Г­." << endl;
+		cout << "6 - Г‚Г»ГµГ®Г¤ Гў Г®Г±Г­Г®ГўГ Г­Г®ГҐ Г¬ГҐГ­Гѕ." << endl;
 
-		cout << "Введите пункт: ";
+		cout << "Г‚ГўГҐГ¤ГЁГІГҐ ГЇГіГ­ГЄГІ: ";
 		cin >> menu;
 		switch (menu) {
 		case 1: obj.add(); break;
 		
-		//Добавили system("pause"), чтобы можно было увидеть, что произошло с массивом, либо удалили элемент, либо массив пуст
-		case 2: obj.print(); cout << "Введите элемент, который нужно удалить: "; cin >> index; obj.del(index); system("pause"); break;
+		case 2: obj.print(); cout << "Г‚ГўГҐГ¤ГЁГІГҐ ГЅГ«ГҐГ¬ГҐГ­ГІ, ГЄГ®ГІГ®Г°Г»Г© Г­ГіГ¦Г­Г® ГіГ¤Г Г«ГЁГІГј: "; cin >> index; obj.del(index); system("pause"); break;
 		case 3: obj.read(s); system("pause"); break;
 		case 4: obj.save(s); system("pause"); break;
 		case 5: obj.print(); system("pause"); break;
 		case 6: flag = 0; break;
-		default: cout << "Ошибка" << endl; system("pause"); break;
+		default: cout << "ГЋГёГЁГЎГЄГ " << endl; system("pause"); break;
 		}
 	}
 }
